@@ -77,6 +77,7 @@ const tamara = {
     // calculateSalary: function () {
     //     return calculateSalary(this.level);
     // },
+
     renderInfo: function () {
         document.write("Employee name: " + this.fullName);
         document.write('<br>');
