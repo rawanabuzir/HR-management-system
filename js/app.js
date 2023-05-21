@@ -21,7 +21,7 @@ const gazi = {
     fullName: "Ghazi Samer",
     department: "Administration",
     level: "Senior",
-    img: "https://ghazi.jpg",
+    img: "./assets/img1.png",
     calculateSalary: function () {
         return calculateSalary(this.level);
     },
@@ -38,7 +38,7 @@ const lana = {
     fullName: "Lana Ali",
     department: "Finance",
     level: "Senior",
-    img: "https://lana.jpg",
+    img: "./assets/img2.png",
     calculateSalary: function () {
         return calculateSalary(this.level);
     },
@@ -55,7 +55,7 @@ const tamara = {
     fullName: "Tamara Ayoub",
     department: "Marketing",
     level: "Senior",
-    img: "https:/tamara.jpg",
+    img: "./assets/img3.png",
     calculateSalary: function () {
         return calculateSalary(this.level);
     },
@@ -72,7 +72,7 @@ const safi = {
     fullName: "Safi Walid",
     department: "Administration",
     level: "Mid-Senior",
-    img: "https://Safi.jpg",
+    img: "./assets/img4.png",
     calculateSalary: function () {
         return calculateSalary(this.level);
     },
@@ -89,7 +89,7 @@ const omar = {
     fullName: "Omar Ziad",
     department: "Development",
     level: "Senior",
-    img: "https://omar.jpg",
+    img: "./assets/img5.png",
     calculateSalary: function () {
         return calculateSalary(this.level);
     },
