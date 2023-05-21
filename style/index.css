@@ -89,10 +89,11 @@ footer ul li a {
     text-decoration: none;
 }
 
-.card-container {
-    display: flex;
+#card-container {
+    /* display: flex; 
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    color: #000;
 }
 
 .card {
