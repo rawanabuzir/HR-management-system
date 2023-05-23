@@ -3,13 +3,17 @@ const employee_Array = [];
 const mainSec = document.createElement("main");
 
 function Employee_Info(fullName, depatment, level, img) {
-    this.id = Math.floor(1000 + Math.random() * 9000);
+    this.id = id();
     this.fullName = fullName;
     this.depatment = depatment;
     this.level = level;
     this.img = img;
+    this.salary = this.calculateSalary();
     employee_Array.push(this);
 }
+function id() {
+    Math.floor(1000 + Math.random() * 9000);
+};
 Employee_Info.prototype.calculateSalary = function () {
     switch (this.level) {
         case "senior":
@@ -27,13 +31,13 @@ Employee_Info.prototype.calculateSalary = function () {
             break;
     }
 }
-
 Employee_Info.prototype.renderInfo = function () {
     document.write("Employee name: " + this.fullName + "<br>");
     document.write("Department: " + this.depatment + "<br>");
-    document.write("Employee salary: " + this.calculateSalary());
+    document.write("Employee salary: " + this.salary);
     document.write("<br> <br>");
 };
+
 const gazi = new Employee_Info("Ghazi Samer", "Administration", "senior", "./assets/img3.jpg");
 const lana = new Employee_Info("Lana Ali", "Finance", "senior", "./assets/img4.jpg");
 const tamara = new Employee_Info("Tamara Ayoub", "Marketing", "senior", "./assets/img2.jpg");
@@ -48,6 +52,18 @@ function renderHomePage() {
     }
 }
 renderHomePage();
+
+
+
+
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////////////
 
