@@ -40,12 +40,13 @@ EmployeeInfo.prototype.renderInfo = function () {
 
     const section = document.getElementById(this.department);
     const mainDiv = document.createElement("div");
+    const divid = document.createElement("p");
     const imgElement = document.createElement("img");
     const nameEl = document.createElement("h4");
     const departInfo = document.createElement("p");
     const salaryInfo = document.createElement("p");
 
-
+    divid.textContent = `Employee ID : ${this.id}`;
     departInfo.textContent = this.department;
     salaryInfo.textContent = this.salary;
     nameEl.textContent = this.fullName;
@@ -55,12 +56,15 @@ EmployeeInfo.prototype.renderInfo = function () {
 
     mainDiv.appendChild(imgElement);
     mainDiv.appendChild(nameEl);
+    mainDiv.appendChild(divid);
     mainDiv.appendChild(departInfo);
     mainDiv.appendChild(salaryInfo);
     section.appendChild(mainDiv);
 
 
     //style :
+    divid.style.fontSize = "20px";
+    divid.style.color = "#37388E";
     departInfo.style.fontSize = "20px";
     departInfo.style.color = "#37388E";
     salaryInfo.style.color = "#37388E";
