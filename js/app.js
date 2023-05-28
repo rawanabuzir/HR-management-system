@@ -1,210 +1,95 @@
 'use strict';
-const employee_Array = [];
-const mainSec = document.createElement("main");
 
-function Employee_Info(fullName, depatment, level, img) {
+const employeeArray = [];
+const main = document.createElement("main");
+
+function EmployeeInfo(fullName, department, level, img) {
     this.id = id();
     this.fullName = fullName;
-    this.depatment = depatment;
+    this.department = department;
     this.level = level;
     this.img = img;
     this.salary = this.calculateSalary();
-    employee_Array.push(this);
+    employeeArray.push(this);
 }
+
 function id() {
-    Math.floor(1000 + Math.random() * 9000);
-};
-Employee_Info.prototype.calculateSalary = function () {
+    return Math.floor(1000 + Math.random() * 9000);
+}
+
+EmployeeInfo.prototype.calculateSalary = function () {
     switch (this.level) {
         case "senior":
-            let seniorSalary = Math.floor((Math.floor(1500 + (Math.random() * 500))) * 0.925);
-            return seniorSalary;
-
-            break;
+            return Math.floor((Math.floor(1500 + Math.random() * 500)) * 0.925);
         case "mid-senior":
-            let midSeniorSalary = Math.floor((Math.floor(1000 + (Math.random() * 500))) * 0.925);
-            return midSeniorSalary;
-            break;
+            return Math.floor((Math.floor(1000 + Math.random() * 500)) * 0.925);
         case "junior":
-            let juniorSalary = Math.floor((Math.floor(500 + (Math.random() * 500))) * 0.925);
-            return juniorSalary;
-            break;
+            return Math.floor((Math.floor(500 + Math.random() * 500)) * 0.925);
     }
-}
-Employee_Info.prototype.renderInfo = function () {
-    document.write("Employee name: " + this.fullName + "<br>");
-    document.write("Department: " + this.depatment + "<br>");
-    document.write("Employee salary: " + this.salary);
-    document.write("<br> <br>");
 };
 
-const gazi = new Employee_Info("Ghazi Samer", "Administration", "senior", "./assets/img3.jpg");
-const lana = new Employee_Info("Lana Ali", "Finance", "senior", "./assets/img4.jpg");
-const tamara = new Employee_Info("Tamara Ayoub", "Marketing", "senior", "./assets/img2.jpg");
-const safi = new Employee_Info("Safi Walid", "Administration", "mid-senior", "./assets/img5.jpg");
-const omar = new Employee_Info("Omar Ziad", "Development", "senior", "./assets/img3.jpg");
-const rana = new Employee_Info("Rana Saleh", "Development", "junior", "./assets/img2.jpg");
-const hadi = new Employee_Info("Hadi Ahmad", "Finance", "mid-senior", "./assets/img4.jpg");
+EmployeeInfo.prototype.renderInfo = function () {
+
+    let departmentdiv = document.getElementById(this.department);
+    if (departmentdiv != this.department) {
+        const neww = document.createElement("div");
+        neww.id = this.department;
+        neww.style.fontSize = "20px";
+        main.appendChild(neww);
+    }
+
+    const section = document.getElementById(this.department);
+    const mainDiv = document.createElement("div");
+    const imgElement = document.createElement("img");
+    const nameEl = document.createElement("h4");
+    const departInfo = document.createElement("p");
+    const salaryInfo = document.createElement("p");
+
+
+    departInfo.textContent = this.department;
+    salaryInfo.textContent = this.salary;
+    nameEl.textContent = this.fullName;
+    imgElement.src = this.img;
+    imgElement.alt = this.fullName;
+
+
+    mainDiv.appendChild(imgElement);
+    mainDiv.appendChild(nameEl);
+    mainDiv.appendChild(departInfo);
+    mainDiv.appendChild(salaryInfo);
+    section.appendChild(mainDiv);
+
+
+    //style :
+    departInfo.style.fontSize = "20px";
+    departInfo.style.color = "#37388E";
+    salaryInfo.style.color = "#37388E";
+    salaryInfo.style.fontSize = "20px";
+    nameEl.style.color = "#37388E";
+    nameEl.style.fontSize = "20px";
+    imgElement.style.width = "25%";
+    mainDiv.style.border = "2px solid black";
+    mainDiv.style.borderColor = "#37388E";
+    mainDiv.style.marginBottom = "20px";
+    mainDiv.style.paddingTop = "20px";
+    mainDiv.style.textAlign = "center";
+
+};
+
+const gazi = new EmployeeInfo("Ghazi Samer", "Administration", "senior", "./assets/Ghazi.jpg");
+const safi = new EmployeeInfo("Safi Walid", "Administration", "mid-senior", "./assets/Safi.jpg");
+const lana = new EmployeeInfo("Lana Ali", "Finance", "senior", "./assets/Lana.jpg");
+const hadi = new EmployeeInfo("Hadi Ahmad", "Finance", "mid-senior", "./assets/Hadi.jpg");
+const tamara = new EmployeeInfo("Tamara Ayoub", "Marketing", "senior", "./assets/Tamara.jpg");
+const omar = new EmployeeInfo("Omar Ziad", "Development", "senior", "./assets/Omar.jpg");
+const rana = new EmployeeInfo("Rana Saleh", "Development", "junior", "./assets/Rana.jpg");
 
 function renderHomePage() {
-    for (let i = 0; i < employee_Array.length; i++) {
-        employee_Array[i].renderInfo();
+    document.body.appendChild(main);
+
+    for (let i = 0; i < employeeArray.length; i++) {
+        employeeArray[i].renderInfo();
     }
 }
+
 renderHomePage();
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////
-
-
-// const gazi = {
-//     id: id(),
-//     fullName: "Ghazi Samer",
-//     department: "Administration",
-//     level: "Senior",
-//     img: "./assets/img1.png",
-//     salary: 0,
-//     // calculateSalary: function () {
-//     //     return calculateSalary(this.level);
-//     // },
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// }; gazi.salary = calculateSalary(gazi.level);
-// let lana = {
-//     id: id(),
-//     fullName: "Lana Ali",
-//     department: "Finance",
-//     level: "Senior",
-//     img: "./assets/img2.png",
-//     salary: 0,
-//     // salary: calculateSalary(this.level),
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         console.log(this.level);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// };
-// lana.salary = calculateSalary(lana.level);
-// const tamara = {
-//     id: id(),
-//     fullName: "Tamara Ayoub",
-//     department: "Marketing",
-//     level: "Senior",
-//     img: "./assets/img3.png",
-//     salary: 0,
-//     // calculateSalary: function () {
-//     //     return calculateSalary(this.level);
-//     // },
-
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// };
-
-// tamara.salary = calculateSalary(tamara.level);
-
-// const safi = {
-//     id: id(),
-//     fullName: "Safi Walid",
-//     department: "Administration",
-//     level: "Mid-Senior",
-//     img: "./assets/img4.png",
-//     salary: 0,
-//     // calculateSalary: function () {
-//     //     return calculateSalary(this.level);
-//     // },
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// }; safi.salary = calculateSalary(safi.level);
-// const omar = {
-//     id: id(),
-//     fullName: "Omar Ziad",
-//     department: "Development",
-//     level: "Senior",
-//     img: "./assets/img5.png",
-//     salary: 0,
-//     // calculateSalary: function () {
-//     //     return calculateSalary(this.level);
-//     // },
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// }; omar.salary = calculateSalary(omar.level);
-
-// const Rana = {
-//     id: id(),
-//     fullName: "Rana Saleh",
-//     department: "Development",
-//     level: "Junior",
-//     img: "./assets/img6.png",
-//     salary: 0,
-//     // calculateSalary: function () {
-//     //     return calculateSalary(this.level);
-//     // },
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// }; //1005	Rana Saleh	Development	Junior
-// Rana.salary = calculateSalary(Rana.level);
-// const Hadi = {
-//     id: id(),
-//     fullName: "Hadi Ahmad	",
-//     department: "Finance",
-//     level: "Mid-Senior",
-//     img: "./assets/img7.png",
-//     salary: 0,
-//     // calculateSalary: function () {
-//     //     return calculateSalary(this.level);
-//     // },
-//     renderInfo: function () {
-//         document.write("Employee name: " + this.fullName);
-//         document.write('<br>');
-//         document.write("Employee salary: " + this.salary);
-//         document.write('<br>');
-//         document.write('<br>');
-//     }
-// };
-// Hadi.salary = calculateSalary(Hadi.level);
-// 1006	Hadi Ahmad	Finance	Mid-Senior
-
-// employee_Array.push(gazi, lana, tamara, safi, omar, Rana, Hadi);
-// function salaryy() {
-//     employee_salary = calculateSalary(this.level);
-//     return employee_salary;
-// };
