@@ -34,7 +34,6 @@ EmployeeInfo.prototype.renderInfo = function () {
     if (departmentdiv != this.department) {
         const neww = document.createElement("div");
         neww.id = this.department;
-        neww.style.fontSize = "20px";
         main.appendChild(neww);
     }
 
@@ -90,7 +89,6 @@ const rana = new EmployeeInfo("Rana Saleh", "Development", "junior", "./assets/R
 
 function renderHomePage() {
     document.body.appendChild(main);
-
     for (let i = 0; i < employeeArray.length; i++) {
         employeeArray[i].renderInfo();
     }
